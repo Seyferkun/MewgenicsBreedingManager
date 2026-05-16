@@ -1,0 +1,6 @@
+🧹 [code health] Remove unused import: sys in src/mewgenics/dialogs.py
+
+🎯 **What:** Removed the unused `import sys` statement from `src/mewgenics/dialogs.py`.
+💡 **Why:** Removing unused imports reduces clutter, improves code readability, and helps prevent confusion about dependencies. It's a clear improvement to maintainability with no impact on runtime logic.
+✅ **Verification:** Ran `pytest tests/ --basetemp=tmp/pytest` and confirmed that removing the import does not break any tests (any existing failures are unrelated to this change). Checked the file to ensure `sys` was not used elsewhere.
+✨ **Result:** A cleaner `dialogs.py` file with slightly reduced overhead and better code health.
