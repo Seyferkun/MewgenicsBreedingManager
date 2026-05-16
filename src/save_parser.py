@@ -1494,7 +1494,8 @@ def _break_pedigree_cycles(cats: list["Cat"]) -> int:
     # Quick pass: fix self-parent loops
     for cat in cats:
         for attr in ("parent_a", "parent_b"):
-            if getattr(cat, attr) is cat:
+            parent = getattr(cat, attr)
+            if parent is cat or (parent is not None and parent.db_key == cat.db_key):
                 logger.warning("Breaking self-parent loop for cat %s", cat.db_key)
                 _mark_repair(cat)
                 setattr(cat, attr, None)
