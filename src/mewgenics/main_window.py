@@ -1,5 +1,4 @@
 """MainWindow: primary application window for Mewgenics Breeding Manager."""
-import re
 import csv
 import os
 from pathlib import Path
