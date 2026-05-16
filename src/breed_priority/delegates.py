@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QFrame,
     QTableWidget, QTableWidgetItem, QHeaderView,
     QListWidget,
-    QComboBox, QLineEdit, QPushButton, QDialog, QGridLayout,
+    QComboBox, QLineEdit, QPushButton, QDialog,
     QStyledItemDelegate, QApplication, QStyle,
 )
 from PySide6.QtCore import Qt, Signal, QTimer, QObject, QEvent, QRect, QSize
