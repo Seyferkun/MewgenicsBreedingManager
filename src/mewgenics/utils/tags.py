@@ -5,7 +5,7 @@ import shutil
 from typing import Optional
 from pathlib import Path
 
-from PySide6.QtWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import Qt, QPointF, QRectF
 from PySide6.QtGui import QColor, QBrush, QPainter, QPixmap, QIcon, QPen, QPainterPath
 
