@@ -2,12 +2,16 @@
 import html
 import re
 import struct
-from typing import Sequence
+from typing import Sequence, TYPE_CHECKING
 
 from save_parser import (
-    Cat, _load_gpak_text_strings, _resolve_game_string,
+    _load_gpak_text_strings, _resolve_game_string,
     _stimulation_inheritance_weight, _extract_primary_language_text,
 )
+
+
+if TYPE_CHECKING:
+    from save_parser import Cat
 
 
 # ── Ability tooltip lookup ───────────────────────────────────────────────────
