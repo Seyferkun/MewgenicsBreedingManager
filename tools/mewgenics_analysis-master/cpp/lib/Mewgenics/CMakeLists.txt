@@ -20,7 +20,7 @@ if(MSVC)
 elseif(MINGW)
   add_custom_command(
       OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/Mewgenics_exports.lib
-      COMMAND dlltool
+      COMMAND x86_64-w64-mingw32-dlltool
               -d ${CMAKE_CURRENT_SOURCE_DIR}/Mewgenics.def
               -l ${CMAKE_CURRENT_BINARY_DIR}/Mewgenics_exports.lib
       DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Mewgenics.def

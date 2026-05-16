@@ -25,13 +25,6 @@ bool on_attach() {
 
     // Instantiate the transaction logger
     G.tlogger = new TransactionLogger(TLOG_FILE_LOCATION, true);
-    // open its backing file for write
-    // TODO add option to enable transaction logging in imgui interface
-    // G.tlogger->open();
-    // and write a schema hint to the meta channel
-    G.tlogger->select_vsid(TlogVsid::Meta);
-    G.tlogger->set_timestamp_now();
-    G.tlogger->write_int64(TLOG_SCHEMA_VERSION_HINT);
 
     // Create a Win32 console window with which to print log messages
     ALLOC_CONSOLE();
