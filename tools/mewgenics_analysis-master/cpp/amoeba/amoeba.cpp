@@ -14,29 +14,29 @@
 //
 // polymeric 2026
 
-GlobalContext G;
-
 const std::filesystem::path TLOG_FILE_LOCATION = LR"(C:\Games\test.tlog.lz4)";
+
+GlobalContext::GlobalContext() : tlogger(TLOG_FILE_LOCATION, true) {}
+
+GlobalContext G;
 
 bool on_attach() {
     // Actual virtual address where mapped executable begins
     uintptr_t host_exec_base_va = reinterpret_cast<uintptr_t>(GetModuleHandle(NULL));
     G.host_exec_base_va = host_exec_base_va;
 
-    // Instantiate the transaction logger
-    G.tlogger = new TransactionLogger(TLOG_FILE_LOCATION, true);
     // open its backing file for write
     // TODO add option to enable transaction logging in imgui interface
-    // G.tlogger->open();
+    // G.tlogger.open();
     // and write a schema hint to the meta channel
-    G.tlogger->select_vsid(TlogVsid::Meta);
-    G.tlogger->set_timestamp_now();
-    G.tlogger->write_int64(TLOG_SCHEMA_VERSION_HINT);
+    G.tlogger.select_vsid(TlogVsid::Meta);
+    G.tlogger.set_timestamp_now();
+    G.tlogger.write_int64(TLOG_SCHEMA_VERSION_HINT);
 
     // Create a Win32 console window with which to print log messages
     ALLOC_CONSOLE();
     // Link the transaction logger with the debug console backend
-    D::install_tlogger(G.tlogger, TlogVsid::Log);
+    D::install_tlogger(&G.tlogger, TlogVsid::Log);
     // Enable the debug console internal message buffer
     D::enable_internal_buffer(1000, 1000);
 
@@ -89,9 +89,8 @@ void final_rites(bool is_detach, bool terminate_process) {
     // Always finalize tlogger before exit, even if we plan to terminate the process
     D::uninstall_tlogger();
     // write reset to indicate stream end
-    G.tlogger->reset();
+    G.tlogger.reset();
     // then flush and close the log
-    delete G.tlogger;
 }
 
 void do_process_termination() {

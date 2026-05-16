@@ -52,10 +52,11 @@ enum TlogVsid : uint32_t {
 };
 
 struct GlobalContext {
+    GlobalContext();
     // This will necessarily be resolved if sampled inside a hook
     uintptr_t dll_base_va;
     // This will necessarily be resolved if sampled inside a hook
     uintptr_t host_exec_base_va;
     // TODO since this class isn't RAII anymore, don't need to dynamically allocate
-    TransactionLogger *tlogger;
+    TransactionLogger tlogger;
 };
