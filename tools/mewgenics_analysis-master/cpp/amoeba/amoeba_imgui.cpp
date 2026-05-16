@@ -26,6 +26,7 @@ struct ImguiPrivateState {
     bool show_data_explorer = false;
     bool show_debug_console = false;
     bool show_imgui_demo = false;
+    bool enable_transaction_logging = false;
 };
 
 static ImguiPrivateState P;
@@ -123,6 +124,16 @@ void show_main_menu_bar() {
             ImGui::EndMenu();
         }
         if(ImGui::BeginMenu("Tools")) {
+            if(ImGui::MenuItem("Enable transaction logging", NULL, &P.enable_transaction_logging)) {
+                if(P.enable_transaction_logging) {
+                    G.tlogger->open();
+                    G.tlogger->select_vsid(TlogVsid::Meta);
+                    G.tlogger->set_timestamp_now();
+                    G.tlogger->write_int64(TLOG_SCHEMA_VERSION_HINT);
+                } else {
+                    G.tlogger->close();
+                }
+            }
             if(ImGui::MenuItem("Show Feline Therapist", NULL, &P.show_feline_therapist)) {}
             if(ImGui::MenuItem("Show data explorer", NULL, &P.show_data_explorer)) {}
             if(ImGui::MenuItem("Show debug console", NULL, &P.show_debug_console)) {}
