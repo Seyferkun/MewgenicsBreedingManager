@@ -28,8 +28,13 @@ void TransactionLogger::open() {
         this->file = std::ofstream(this->file_path, std::ios::binary); // TODO can throw
         this->stream_buffer.resize(this->CHUNK_SIZE);
         if(this->format == 1) {
-            LZ4F_createCompressionContext(&this->lz4_cctx, LZ4F_VERSION); // TODO can fail
-            this->compress_buffer.resize((std::max)(static_cast<size_t>(LZ4F_HEADER_SIZE_MAX), LZ4F_compressBound(this->CHUNK_SIZE, &this->lz4_preferences)));
+            LZ4F_errorCode_t err = LZ4F_createCompressionContext(&this->lz4_cctx, LZ4F_VERSION);
+            if(LZ4F_isError(err)) {
+                D::error("lz4 - error - {}", LZ4F_getErrorName(err));
+                this->format = 0;
+            } else {
+                this->compress_buffer.resize((std::max)(static_cast<size_t>(LZ4F_HEADER_SIZE_MAX), LZ4F_compressBound(this->CHUNK_SIZE, &this->lz4_preferences)));
+            }
         }
 
         write_header();
