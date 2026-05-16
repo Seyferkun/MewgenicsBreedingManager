@@ -285,10 +285,11 @@ class SWFDatabaseAccessor:
             return -1
         
         try:
+            safe_table_name = table_name.replace('"', '""')
             cursor = conn.cursor()
             cursor.execute(f'''
             SELECT MAX(frame_index) as max_frame
-            FROM [{table_name}]
+            FROM \"{safe_table_name}\"
             ''')
             
             row = cursor.fetchone()
@@ -322,6 +323,7 @@ class SWFDatabaseAccessor:
         try:
             cursor = conn.cursor()
             
+            safe_table_name = table_name.replace('"', '""')
             # Build SELECT clause based on active database
             if self._active_db_type == "catanis":
                 # Catanis has rotation data
@@ -335,7 +337,7 @@ class SWFDatabaseAccessor:
                        place_flag_has_name, place_flag_has_ratio,
                        place_flag_has_color_transform, place_flag_has_matrix,
                        place_flag_has_character, place_flag_move
-                FROM [{table_name}]
+                FROM \"{safe_table_name}\"
                 WHERE frame_index = ?
                 ORDER BY ROWID ASC
                 ''', (frame_index,))
@@ -350,7 +352,7 @@ class SWFDatabaseAccessor:
                        place_flag_has_name, place_flag_has_ratio,
                        place_flag_has_color_transform, place_flag_has_matrix,
                        place_flag_has_character, place_flag_move
-                FROM [{table_name}]
+                FROM \"{safe_table_name}\"
                 WHERE frame_index = ?
                 ORDER BY ROWID ASC
                 ''', (frame_index,))
@@ -437,10 +439,11 @@ class SWFDatabaseAccessor:
         try:
             cursor = conn.cursor()
             
+            safe_table_name = table_name.replace('"', '""')
             # Walk backwards from frame_index - 1 to frame 0
             for prev_frame in range(frame_index - 1, -1, -1):
                 cursor.execute(f'''
-                SELECT character_id FROM [{table_name}]
+                SELECT character_id FROM \"{safe_table_name}\"
                 WHERE frame_index = ? AND depth = ? AND character_id != -1
                 LIMIT 1
                 ''', (prev_frame, depth))
