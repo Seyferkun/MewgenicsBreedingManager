@@ -69,6 +69,11 @@ class SWFDatabaseAccessor:
         
         self._load_symbol_class_maps()
     
+
+    def _quote_identifier(self, identifier: str) -> str:
+        """Safely quote an SQLite identifier (like a table or column name)."""
+        return '"' + identifier.replace('"', '""') + '"'
+
     def set_active_database(self, db_type: Literal["catparts", "catanis"]) -> None:
         """Switch between catparts and catanis databases."""
         if db_type not in ("catparts", "catanis"):
@@ -285,10 +290,11 @@ class SWFDatabaseAccessor:
             return -1
         
         try:
+            safe_table = self._quote_identifier(table_name)
             cursor = conn.cursor()
             cursor.execute(f'''
             SELECT MAX(frame_index) as max_frame
-            FROM [{table_name}]
+            FROM {safe_table}
             ''')
             
             row = cursor.fetchone()
@@ -323,6 +329,7 @@ class SWFDatabaseAccessor:
             cursor = conn.cursor()
             
             # Build SELECT clause based on active database
+            safe_table = self._quote_identifier(table_name)
             if self._active_db_type == "catanis":
                 # Catanis has rotation data
                 cursor.execute(f'''
@@ -335,7 +342,7 @@ class SWFDatabaseAccessor:
                        place_flag_has_name, place_flag_has_ratio,
                        place_flag_has_color_transform, place_flag_has_matrix,
                        place_flag_has_character, place_flag_move
-                FROM [{table_name}]
+                FROM {safe_table}
                 WHERE frame_index = ?
                 ORDER BY ROWID ASC
                 ''', (frame_index,))
@@ -350,7 +357,7 @@ class SWFDatabaseAccessor:
                        place_flag_has_name, place_flag_has_ratio,
                        place_flag_has_color_transform, place_flag_has_matrix,
                        place_flag_has_character, place_flag_move
-                FROM [{table_name}]
+                FROM {safe_table}
                 WHERE frame_index = ?
                 ORDER BY ROWID ASC
                 ''', (frame_index,))
@@ -435,12 +442,13 @@ class SWFDatabaseAccessor:
             return None
         
         try:
+            safe_table = self._quote_identifier(table_name)
             cursor = conn.cursor()
             
             # Walk backwards from frame_index - 1 to frame 0
             for prev_frame in range(frame_index - 1, -1, -1):
                 cursor.execute(f'''
-                SELECT character_id FROM [{table_name}]
+                SELECT character_id FROM {safe_table}
                 WHERE frame_index = ? AND depth = ? AND character_id != -1
                 LIMIT 1
                 ''', (prev_frame, depth))
