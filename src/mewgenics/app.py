@@ -1,6 +1,5 @@
 """Application entry point: QApplication setup, save selector, and MainWindow launch."""
 import sys
-import os
 import logging
 from typing import Optional
 
