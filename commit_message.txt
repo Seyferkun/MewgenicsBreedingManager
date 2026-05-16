@@ -1,0 +1,6 @@
+🧹 Remove unused Path import in main_window.py
+
+🎯 **What:** Removed unused `Path` import from `pathlib` in `src/mewgenics/main_window.py`.
+💡 **Why:** To improve code maintainability and readability by removing dead code.
+✅ **Verification:** Verified by checking no instances of `Path` were used in the file, and ensuring test suite continues to pass.
+✨ **Result:** A cleaner `main_window.py` file.

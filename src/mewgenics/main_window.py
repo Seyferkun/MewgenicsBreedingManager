@@ -2,7 +2,6 @@
 import re
 import csv
 import os
-from pathlib import Path
 from typing import Optional
 
 from PySide6.QtWidgets import (
