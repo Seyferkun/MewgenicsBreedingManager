@@ -11,7 +11,7 @@ from PySide6.QtWidgets import (
     QStyledItemDelegate, QApplication, QStyle,
 )
 from PySide6.QtCore import Qt, Signal, QTimer, QObject, QEvent, QRect, QSize
-from PySide6.QtGui import QColor, QBrush, QPainter, QPen, QFont, QFontMetrics
+from PySide6.QtGui import QColor, QPainter, QPen, QFont, QFontMetrics
 from PySide6.QtWidgets import QToolTip
 
 from .columns import (
