@@ -4,7 +4,7 @@ from typing import Optional
 
 from PySide6.QtWidgets import (
     QWidget, QLabel, QFrame, QVBoxLayout, QPushButton,
-    QTableWidget, QTableView, QHeaderView,
+    QTableView, QHeaderView,
 )
 from PySide6.QtGui import QColor, QFont
 
