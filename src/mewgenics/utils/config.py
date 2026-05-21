@@ -11,7 +11,7 @@ from PySide6.QtCore import QByteArray
 
 from mewgenics.constants import _ZOOM_MIN, _ZOOM_MAX
 from mewgenics.utils.paths import (
-    APP_CONFIG_PATH, APPDATA_CONFIG_DIR, APPDATA_SAVE_DIR,
+    APP_CONFIG_PATH, APPDATA_SAVE_DIR,
     _app_dir, _bundle_dir, _steam_library_paths,
 )
 
