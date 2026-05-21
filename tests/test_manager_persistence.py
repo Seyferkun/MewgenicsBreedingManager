@@ -43,7 +43,7 @@ def _patch_config_paths(monkeypatch, root: Path, config_path: Path):
     monkeypatch.setattr(mm, "APP_CONFIG_PATH", str(config_path))
     monkeypatch.setattr(path_utils, "APPDATA_CONFIG_DIR", str(root))
     monkeypatch.setattr(path_utils, "APP_CONFIG_PATH", str(config_path))
-    monkeypatch.setattr(config_utils, "APPDATA_CONFIG_DIR", str(root))
+
     monkeypatch.setattr(config_utils, "APP_CONFIG_PATH", str(config_path))
 
 

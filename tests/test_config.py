@@ -34,7 +34,7 @@ class TestLoadSaveConfig:
     def test_round_trips_data(self, tmp_path, monkeypatch):
         cfg_path = tmp_path / "test_config.json"
         monkeypatch.setattr("mewgenics.utils.config.APP_CONFIG_PATH", str(cfg_path))
-        monkeypatch.setattr("mewgenics.utils.config.APPDATA_CONFIG_DIR", str(tmp_path))
+
 
         test_data = {"language": "ru", "zoom_percent": 125}
         _save_app_config(test_data)
