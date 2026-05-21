@@ -1,3 +1,4 @@
+#include <chrono>
 #include "amoeba.hpp"
 #include "types/glaiel.hpp"
 #include "utilities/debug_console.hpp"
@@ -627,7 +628,10 @@ void show_feline_therapist_window() {
                         ImguiTextStdFmt("Collar: {}", cat.collar);
                         ImguiTextStdFmt("Level: {}", cat.level);
                         ImguiTextStdFmt("COI: {}", cat.coi);
-                        ImguiTextStdFmt("Birthday: {}", cat.birthday); // TODO calculate days ago
+                        const auto now = std::chrono::system_clock::now();
+                        const auto birthday_time = std::chrono::system_clock::from_time_t(cat.birthday);
+                        const auto days_ago = std::chrono::duration_cast<std::chrono::days>(now - birthday_time).count();
+                        ImguiTextStdFmt("Birthday: {} ({} days ago)", cat.birthday, days_ago);
                         ImguiTextStdFmt("Deathday (if died in house): {}", cat.deathday_house);
                         ImguiTextStdFmt("unknown 17");
                         ImguiTextStdFmt("unknown 17 size/capacity: {} {}", cat.unknown_17.size, cat.unknown_17.capacity);
