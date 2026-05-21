@@ -95,13 +95,20 @@ def _planner_trait_tooltip(summary: dict, *, label: str = "Mutation planner") ->
     return "\n".join(parts)
 
 
-def _planner_trait_summary_for_cat(cat: 'Cat', traits: Sequence[dict]) -> dict:
-    positive_score = 0.0
-    negative_score = 0.0
-    max_score = 0.0
-    matches: list[str] = []
-    penalties: list[str] = []
+class ProcessedTrait:
+    __slots__ = ['category', 'key', 'weight', 'display', 'scale_5', 'scale_75', 'scale_25']
+    def __init__(self, category: str, key: str, weight: float, display: str):
+        self.category = category
+        self.key = key
+        self.weight = weight
+        self.display = display
+        scale = weight / 10.0
+        self.scale_5 = scale * 5.0
+        self.scale_75 = abs(scale) * 7.5
+        self.scale_25 = scale * 2.5
 
+def _process_planner_traits(traits: Sequence[dict]) -> list[ProcessedTrait]:
+    processed = []
     for trait in traits:
         category = str(trait.get("category", "")).strip()
         key = str(trait.get("key", "")).strip().lower()
@@ -112,17 +119,45 @@ def _planner_trait_summary_for_cat(cat: 'Cat', traits: Sequence[dict]) -> dict:
         if weight == 0:
             continue
 
-        max_score += abs(weight)
-        if not _cat_has_trait(cat, category, key):
+        display = _planner_trait_display_name(str(trait.get("display") or key))
+        processed.append(ProcessedTrait(category, key, weight, display))
+    return processed
+
+def _planner_trait_summary_for_cat(cat: 'Cat', traits: Sequence[dict] | list[ProcessedTrait]) -> dict:
+    if not traits:
+        return {
+            "score": 0.0,
+            "ratio": 0.0,
+            "positive": 0.0,
+            "negative": 0.0,
+            "matches": [],
+            "penalties": [],
+            "max": 0.0,
+        }
+
+    traits_list: list[ProcessedTrait] = []
+    if isinstance(traits[0], dict):
+        traits_list = _process_planner_traits(traits) # type: ignore
+    else:
+        traits_list = traits # type: ignore
+
+    positive_score = 0.0
+    negative_score = 0.0
+    max_score = 0.0
+    matches: list[str] = []
+    penalties: list[str] = []
+
+    for pt in traits_list:
+        max_score += abs(pt.weight)
+        if not _cat_has_trait(cat, pt.category, pt.key):
             continue
 
-        display = _planner_trait_display_name(str(trait.get("display") or key))
-        if weight > 0:
-            matches.append(display)
-            positive_score += weight
+        if pt.weight > 0:
+            matches.append(pt.display)
+            positive_score += pt.weight
         else:
-            penalties.append(display)
-            negative_score += abs(weight)
+            penalties.append(pt.display)
+            negative_score += abs(pt.weight)
 
     net_score = positive_score - negative_score
     ratio = net_score / max(1.0, max_score)
@@ -137,39 +172,43 @@ def _planner_trait_summary_for_cat(cat: 'Cat', traits: Sequence[dict]) -> dict:
     }
 
 
-def _planner_trait_summary_for_pair(cat_a: 'Cat', cat_b: 'Cat', traits: Sequence[dict]) -> dict:
+def _planner_trait_summary_for_pair(cat_a: 'Cat', cat_b: 'Cat', traits: Sequence[dict] | list[ProcessedTrait]) -> dict:
+    if not traits:
+        return {
+            "score": 0.0,
+            "ratio": 0.0,
+            "matches": [],
+            "penalties": [],
+            "max": 0.0,
+        }
+
+    traits_list: list[ProcessedTrait] = []
+    if isinstance(traits[0], dict):
+        traits_list = _process_planner_traits(traits) # type: ignore
+    else:
+        traits_list = traits # type: ignore
+
     score = 0.0
     max_score = 0.0
     matches: list[str] = []
     penalties: list[str] = []
 
-    for trait in traits:
-        category = str(trait.get("category", "")).strip()
-        key = str(trait.get("key", "")).strip().lower()
-        if not category or not key:
-            continue
+    for pt in traits_list:
+        max_score += pt.scale_75
 
-        weight = float(trait.get("weight", 0) or 0)
-        if weight == 0:
-            continue
-
-        scale = weight / 10.0
-        max_score += abs(scale) * 7.5
-
-        a_has = _cat_has_trait(cat_a, category, key)
-        b_has = _cat_has_trait(cat_b, category, key)
+        a_has = _cat_has_trait(cat_a, pt.category, pt.key)
+        b_has = _cat_has_trait(cat_b, pt.category, pt.key)
         if not (a_has or b_has):
             continue
 
-        display = _planner_trait_display_name(str(trait.get("display") or key))
-        if weight > 0:
-            matches.append(display)
+        if pt.weight > 0:
+            matches.append(pt.display)
         else:
-            penalties.append(display)
+            penalties.append(pt.display)
 
-        score += scale * 5.0
+        score += pt.scale_5
         if a_has and b_has:
-            score += scale * 2.5
+            score += pt.scale_25
 
     ratio = score / max(1.0, max_score)
     return {
