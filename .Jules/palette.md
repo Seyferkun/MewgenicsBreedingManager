@@ -1,0 +1,3 @@
+## 2024-05-14 - [Consistent QLineEdit native clear button]
+**Learning:** PySide6's QLineEdit supports a native clear button via `setClearButtonEnabled(True)`. This gives users an easy way to clear search/filter inputs, improving accessibility and UX over manually selecting and deleting text. Some views (like calibration and furniture) have this enabled, while others (like safe_breeding, breeding_partners, manual_scoring, family_tree, complex_weights/dialog) are missing it.
+**Action:** When creating a QLineEdit that acts as a search or filter input, ensure `setClearButtonEnabled(True)` is enabled for a consistent and improved user experience.
