@@ -1,0 +1,3 @@
+## 2024-10-25 - Search Inputs Missing Clear Buttons
+**Learning:** We have many `QLineEdit` instances used for searching/filtering (e.g. `self._search`), but only some of them have the native PySide6 clear button enabled via `setClearButtonEnabled(True)`. This native clear button is a huge usability improvement, especially since users often need to quickly clear search filters to view full lists of cats, traits, etc.
+**Action:** When implementing or fixing `QLineEdit` elements used for searching/filtering in PySide6, always add `setClearButtonEnabled(True)` for a consistent native clear button.
