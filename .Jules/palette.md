@@ -1,0 +1,3 @@
+## 2024-06-01 - Add Native Clear Buttons to QLineEdit Search Fields
+**Learning:** Native clear buttons (using `setClearButtonEnabled(True)`) significantly reduce interaction friction for frequently-cleared text fields like search and filter boxes in Qt applications. It makes the interface more intuitive and accessible for users needing to reset views quickly without repeatedly pressing backspace.
+**Action:** When implementing or reviewing new filter/search input fields using QLineEdit, always enable `setClearButtonEnabled(True)` to ensure a consistent and user-friendly experience across the application.
