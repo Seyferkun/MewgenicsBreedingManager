@@ -86,6 +86,7 @@ class _TraitSelectDialog(QDialog):
         search.setPlaceholderText("Filter traits…")
         search.setStyleSheet(_LINE_STYLE)
         search.textChanged.connect(self._filter)
+        search.setClearButtonEnabled(True)
         vb.addWidget(search)
 
         self._list = QListWidget()

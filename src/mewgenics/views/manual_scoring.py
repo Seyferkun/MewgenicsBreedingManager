@@ -211,6 +211,7 @@ class _MutationSelector(QWidget):
         self._search = QLineEdit()
         self._search.setPlaceholderText("Filter...")
         self._search.textChanged.connect(self._filter_list)
+        self._search.setClearButtonEnabled(True)
         body_vb.addWidget(self._search)
 
         # Show filter (All / Checked / Unchecked)
