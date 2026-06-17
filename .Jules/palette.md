@@ -1,0 +1,3 @@
+## 2024-05-18 - Native Clear Buttons in PySide6 QLineEdits
+**Learning:** Adding a native clear button (`setClearButtonEnabled(True)`) to `QLineEdit` widgets used as search or filter inputs is a simple but highly effective UX enhancement in PySide6 applications. It provides a standard, consistent way for users to quickly clear their searches without having to manually select and delete text, especially in custom UI elements where this might be overlooked.
+**Action:** When implementing or modifying search/filter inputs using `QLineEdit` in PySide6, always add `setClearButtonEnabled(True)` to provide a consistent and accessible clear action, and ensure a helpful placeholder text is set.
