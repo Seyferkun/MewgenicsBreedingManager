@@ -183,6 +183,7 @@ class SafeBreedingView(QWidget):
         muts_label.setStyleSheet("QLabel { color:#bbb; }")
         v.addWidget(muts_label)
         self._filter_mutation_search = QLineEdit()
+        self._filter_mutation_search.setClearButtonEnabled(True)
         self._filter_mutation_search.setPlaceholderText("Search mutations…")
         self._filter_mutation_search.textChanged.connect(self._refresh_mutation_filter_visibility)
         v.addWidget(self._filter_mutation_search)
@@ -257,6 +258,8 @@ class SafeBreedingView(QWidget):
         self._list_title = QLabel(styleSheet="color:#666; font-size:10px; font-weight:bold;")
         sv.addWidget(self._list_title)
         self._search = QLineEdit()
+        self._search.setClearButtonEnabled(True)
+        self._search.setPlaceholderText(_tr("safe_breeding.search_placeholder", default="Search cats…"))
         sv.addWidget(self._search)
         self._list = QListWidget()
         self._list.setIconSize(QSize(60, 20))
@@ -349,7 +352,7 @@ class SafeBreedingView(QWidget):
 
     def retranslate_ui(self):
         self._list_title.setText(_tr("safe_breeding.list_title"))
-        self._search.setPlaceholderText(_tr("safe_breeding.search_placeholder"))
+        self._search.setPlaceholderText(_tr("safe_breeding.search_placeholder", default="Search cats…"))
         self._update_mode_controls()
         self._apply_mode_headers()
         self._refresh_list()
