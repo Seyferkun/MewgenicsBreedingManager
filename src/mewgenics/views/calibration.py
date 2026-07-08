@@ -122,6 +122,7 @@ class CalibrationView(QWidget):
         self._search_label.setStyleSheet("color:#888; font-size:11px;")
         filter_row.addWidget(self._search_label)
         self._search_input = QLineEdit()
+        self._search_input.setPlaceholderText("Search...")
         self._search_input.setClearButtonEnabled(True)
         self._search_input.setStyleSheet(
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
