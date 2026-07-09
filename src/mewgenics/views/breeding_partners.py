@@ -55,6 +55,8 @@ class BreedingPartnersView(QWidget):
         root.addLayout(header)
 
         self._search = QLineEdit()
+        self._search.setPlaceholderText(_tr("breeding_partners.search.placeholder", default="Search pairs…"))
+        self._search.setClearButtonEnabled(True)
         self._search.setToolTip(_tr("breeding_partners.search.tooltip", default="Filter pairs by cat name"))
         root.addWidget(self._search)
 
