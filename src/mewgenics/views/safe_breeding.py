@@ -257,6 +257,7 @@ class SafeBreedingView(QWidget):
         self._list_title = QLabel(styleSheet="color:#666; font-size:10px; font-weight:bold;")
         sv.addWidget(self._list_title)
         self._search = QLineEdit()
+        self._search.setClearButtonEnabled(True)
         sv.addWidget(self._search)
         self._list = QListWidget()
         self._list.setIconSize(QSize(60, 20))
