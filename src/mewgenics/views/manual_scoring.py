@@ -209,6 +209,7 @@ class _MutationSelector(QWidget):
 
         # Search
         self._search = QLineEdit()
+        self._search.setClearButtonEnabled(True)
         self._search.setPlaceholderText("Filter...")
         self._search.textChanged.connect(self._filter_list)
         body_vb.addWidget(self._search)
