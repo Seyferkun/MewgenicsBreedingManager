@@ -1891,6 +1891,7 @@ class PerfectCatPlannerView(QWidget):
 
         self._min_stats_input = QLineEdit()
         self._min_stats_input.setPlaceholderText(_tr("perfect_planner.placeholder.min_stats"))
+        self._min_stats_input.setClearButtonEnabled(True)
         self._min_stats_input.setFixedWidth(60)
         self._min_stats_input.setStyleSheet(
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
@@ -1907,6 +1908,7 @@ class PerfectCatPlannerView(QWidget):
 
         self._max_risk_input = QLineEdit()
         self._max_risk_input.setPlaceholderText(_tr("perfect_planner.placeholder.max_risk"))
+        self._max_risk_input.setClearButtonEnabled(True)
         self._max_risk_input.setFixedWidth(60)
         self._max_risk_input.setStyleSheet(
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
