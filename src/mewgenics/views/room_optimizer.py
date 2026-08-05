@@ -553,6 +553,7 @@ class RoomOptimizerView(QWidget):
         self._min_stats_box_layout.addWidget(self._min_stats_label)
         self._min_stats_input = QLineEdit()
         self._min_stats_input.setPlaceholderText("")
+        self._min_stats_input.setClearButtonEnabled(True)
         self._min_stats_input.setFixedWidth(60)
         self._min_stats_input.setStyleSheet(
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
@@ -572,6 +573,7 @@ class RoomOptimizerView(QWidget):
         self._max_risk_box_layout.addWidget(self._max_risk_label)
         self._max_risk_input = QLineEdit()
         self._max_risk_input.setPlaceholderText("")
+        self._max_risk_input.setClearButtonEnabled(True)
         self._max_risk_input.setFixedWidth(60)
         self._max_risk_input.setStyleSheet(
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
