@@ -1,0 +1,3 @@
+## 2025-02-28 - PySide6 Search Inputs: Clear Buttons and Placeholders
+**Learning:** PySide6 provides a native `setClearButtonEnabled(True)` for `QLineEdit` which significantly improves UX for filter/search inputs by allowing users to quickly clear their searches. This is especially useful for accessibility and overall polish compared to leaving users to manually delete text. Additionally, setting a helpful placeholder via `setPlaceholderText()` ensures context is clear when the field is empty.
+**Action:** When implementing or refactoring search/filter `QLineEdit` inputs in PySide6 applications, always enable the clear button (`setClearButtonEnabled(True)`) and ensure an appropriate, localized placeholder text is provided.
