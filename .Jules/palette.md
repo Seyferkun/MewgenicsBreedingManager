@@ -1,0 +1,3 @@
+## 2024-05-18 - Added native clear buttons to search inputs
+**Learning:** PySide6 QLineEdits have a built-in clear button via `setClearButtonEnabled(True)`. Without this, users have to manually backspace or highlight-delete search queries, which degrades the experience especially in lists they frequently filter.
+**Action:** Always enable `setClearButtonEnabled(True)` for any QLineEdit that acts as a search or filter input to provide a native, standard way for users to clear their searches quickly.
