@@ -364,6 +364,7 @@ class FurnitureView(QWidget):
         self._pin_toggle_btn.setText(_tr("bulk.toggle_pin", default="Toggle Pin"))
         self._pin_toggle_btn.setToolTip(_tr("bulk.toggle_pin.tooltip", default="Toggle pin for selected furniture items"))
         self._pin_only_check.setToolTip(_tr("furniture.pin_only.tooltip", default="Show only pinned items in the current room."))
+        self._pin_only_check.setAccessibleName(self._pin_only_check.toolTip())
         self._pin_only_check.setIcon(_make_pin_icon(True, 16))
         self._table.setHorizontalHeaderLabels([
             _tr("furniture.table.order", default="#"),
