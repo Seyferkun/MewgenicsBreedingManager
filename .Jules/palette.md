@@ -1,0 +1,3 @@
+## 2024-03-24 - Consistent clear buttons on search inputs
+**Learning:** PySide6's QLineEdit supports a native `setClearButtonEnabled(True)` option, which provides a standard platform-agnostic way to add a clear 'x' button inside the text input, improving accessibility and usability without requiring custom UI icons or signal logic. This is particularly useful for filtering and search inputs to allow users to quickly reset views.
+**Action:** Always enable `setClearButtonEnabled(True)` on QLineEdit when it serves as a search or filter input in PySide6 to ensure a consistent native interaction model.
