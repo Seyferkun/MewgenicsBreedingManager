@@ -261,6 +261,7 @@ class FurnitureView(QWidget):
         self._pin_only_check.setCheckable(True)
         self._pin_only_check.setCursor(Qt.PointingHandCursor)
         self._pin_only_check.setToolButtonStyle(Qt.ToolButtonIconOnly)
+        self._pin_only_check.setAccessibleName(_tr("furniture.pin_only.accessible_name", default="Pin only"))
         self._pin_only_check.setIconSize(QSize(16, 16))
         self._pin_only_check.setFixedSize(28, 24)
         self._pin_only_check.setStyleSheet(

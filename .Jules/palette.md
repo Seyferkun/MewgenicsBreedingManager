@@ -1,0 +1,3 @@
+## 2025-02-28 - Missing Accessible Names on Icon-Only Buttons
+**Learning:** In PySide6 applications, icon-only or text-only buttons that use ambiguous symbols (like `📌` or `↗`) might lack proper screen-reader announcements if only tooltips are defined. `setAccessibleName` should be populated explicitly so assistive technologies correctly interpret the button's action.
+**Action:** When adding or maintaining icon-only buttons (`QPushButton` or `QToolButton`), always verify they have `setAccessibleName("Descriptive Action")`, `setToolTip("Descriptive tooltip")`, and `setCursor(Qt.PointingHandCursor)` to ensure full accessibility.
