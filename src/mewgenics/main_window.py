@@ -1476,6 +1476,8 @@ class MainWindow(QMainWindow):
             "QLineEdit:focus { border-color:#3a3a7a; }")
         self._pin_toggle = QPushButton(_tr("header.pin_toggle", default="📌"))
         self._pin_toggle.setCheckable(True)
+        self._pin_toggle.setAccessibleName(_tr("header.pin_toggle_accessible_name", default="Pin toggle"))
+        self._pin_toggle.setCursor(Qt.PointingHandCursor)
         self._pin_toggle.setToolTip(_tr("header.pin_toggle_tooltip", default="Show only pinned cats"))
         self._pin_toggle.setStyleSheet(
             "QPushButton { background:#1a1a32; color:#888; border:1px solid #2a2a4a;"
