@@ -112,6 +112,7 @@ class SafeBreedingView(QWidget):
 
     def _make_pair_jump_button(self, db_key_a: int, db_key_b: int) -> QToolButton:
         jump_btn = QToolButton()
+        jump_btn.setAccessibleName("Jump to Pair")
         jump_btn.setText("↗")
         jump_btn.setCursor(Qt.PointingHandCursor)
         jump_btn.setToolTip(_tr(
@@ -183,6 +184,7 @@ class SafeBreedingView(QWidget):
         muts_label.setStyleSheet("QLabel { color:#bbb; }")
         v.addWidget(muts_label)
         self._filter_mutation_search = QLineEdit()
+        self._filter_mutation_search.setClearButtonEnabled(True)
         self._filter_mutation_search.setPlaceholderText("Search mutations…")
         self._filter_mutation_search.textChanged.connect(self._refresh_mutation_filter_visibility)
         v.addWidget(self._filter_mutation_search)
@@ -257,6 +259,7 @@ class SafeBreedingView(QWidget):
         self._list_title = QLabel(styleSheet="color:#666; font-size:10px; font-weight:bold;")
         sv.addWidget(self._list_title)
         self._search = QLineEdit()
+        self._search.setClearButtonEnabled(True)
         sv.addWidget(self._search)
         self._list = QListWidget()
         self._list.setIconSize(QSize(60, 20))
