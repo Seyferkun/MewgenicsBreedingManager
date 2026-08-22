@@ -2377,6 +2377,7 @@ class RoomOptimizerDetailPanel(QWidget):
         self._pairs_table.setRowCount(len(pairs))
         for i, pair in enumerate(pairs, 1):
             jump_btn = QToolButton()
+            jump_btn.setAccessibleName("Jump to Pair")
             jump_btn.setText("↗")
             jump_btn.setCursor(Qt.PointingHandCursor)
             jump_btn.setToolTip(_tr(
