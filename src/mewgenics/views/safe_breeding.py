@@ -112,6 +112,7 @@ class SafeBreedingView(QWidget):
 
     def _make_pair_jump_button(self, db_key_a: int, db_key_b: int) -> QToolButton:
         jump_btn = QToolButton()
+        jump_btn.setAccessibleName("Jump to pair")
         jump_btn.setText("↗")
         jump_btn.setCursor(Qt.PointingHandCursor)
         jump_btn.setToolTip(_tr(

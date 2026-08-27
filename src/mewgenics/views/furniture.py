@@ -258,6 +258,7 @@ class FurnitureView(QWidget):
         self._pin_toggle_btn.clicked.connect(self._toggle_selected_item_pins)
         search_row.addWidget(self._pin_toggle_btn)
         self._pin_only_check = QToolButton()
+        self._pin_only_check.setAccessibleName("Toggle pinned items only")
         self._pin_only_check.setCheckable(True)
         self._pin_only_check.setCursor(Qt.PointingHandCursor)
         self._pin_only_check.setToolButtonStyle(Qt.ToolButtonIconOnly)
