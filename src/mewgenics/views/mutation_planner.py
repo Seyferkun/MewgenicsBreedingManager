@@ -1439,6 +1439,7 @@ class MutationDisorderPlannerView(QWidget):
             lbl.setToolButtonStyle(Qt.ToolButtonTextOnly)
             lbl.setAutoRaise(True)
             lbl.setCursor(Qt.PointingHandCursor)
+            lbl.setAccessibleName(str(trait.get("display") or trait.get("key") or "?"))
             fg_hex, bg_hex, border_hex = _planner_trait_name_palette(trait.get("weight", 0))
             if bg_hex:
                 lbl.setStyleSheet(
