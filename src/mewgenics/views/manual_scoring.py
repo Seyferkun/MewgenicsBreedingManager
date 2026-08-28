@@ -177,6 +177,7 @@ class _MutationSelector(QWidget):
         # Toggle button
         self._toggle = QToolButton()
         self._toggle.setText(f"{title} (0 selected) \u25BC")
+        self._toggle.setAccessibleName(f"Toggle {title} list")
         self._toggle.setCheckable(True)
         self._toggle.toggled.connect(self._on_toggled)
         self._title = title

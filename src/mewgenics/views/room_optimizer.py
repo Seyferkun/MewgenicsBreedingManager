@@ -552,7 +552,8 @@ class RoomOptimizerView(QWidget):
         self._min_stats_label.setStyleSheet("color:#888; font-size:11px;")
         self._min_stats_box_layout.addWidget(self._min_stats_label)
         self._min_stats_input = QLineEdit()
-        self._min_stats_input.setPlaceholderText("")
+        self._min_stats_input.setPlaceholderText("0")
+        self._min_stats_input.setClearButtonEnabled(True)
         self._min_stats_input.setFixedWidth(60)
         self._min_stats_input.setStyleSheet(
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
@@ -571,7 +572,8 @@ class RoomOptimizerView(QWidget):
         self._max_risk_label.setStyleSheet("color:#888; font-size:11px;")
         self._max_risk_box_layout.addWidget(self._max_risk_label)
         self._max_risk_input = QLineEdit()
-        self._max_risk_input.setPlaceholderText("")
+        self._max_risk_input.setPlaceholderText("100")
+        self._max_risk_input.setClearButtonEnabled(True)
         self._max_risk_input.setFixedWidth(60)
         self._max_risk_input.setStyleSheet(
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
@@ -2382,6 +2384,10 @@ class RoomOptimizerDetailPanel(QWidget):
             jump_btn.setToolTip(_tr(
                 "room_optimizer.detail.button.jump_to_pair",
                 default="Show these two cats in the Alive Cats view",
+            ))
+            jump_btn.setAccessibleName(_tr(
+                "room_optimizer.detail.button.jump_to_pair.accessible_name",
+                default="Jump to pair in Alive Cats view",
             ))
             jump_btn.setAutoRaise(True)
             jump_btn.setFixedSize(24, 22)
