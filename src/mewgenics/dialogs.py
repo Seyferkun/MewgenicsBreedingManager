@@ -353,6 +353,9 @@ class TagManagerDialog(QDialog):
         for color in TAG_PRESET_COLORS:
             btn = QPushButton()
             btn.setFixedSize(22, 22)
+            btn.setToolTip(color.upper())
+            btn.setAccessibleName(color.upper())
+            btn.setCursor(Qt.PointingHandCursor)
             btn.setStyleSheet(
                 f"QPushButton {{ background:{color}; border:2px solid transparent;"
                 f" border-radius:11px; }}"
@@ -614,6 +617,9 @@ class TagManagerDialog(QDialog):
 
                 swatch = QPushButton()
                 swatch.setFixedSize(20, 20)
+                swatch.setToolTip("Change tag color")
+                swatch.setAccessibleName("Change tag color")
+                swatch.setCursor(Qt.PointingHandCursor)
                 swatch.setStyleSheet(
                     f"QPushButton {{ background:{td['color']}; border:none; border-radius:10px; }}"
                     f"QPushButton:hover {{ border:2px solid #fff; }}"
@@ -674,6 +680,9 @@ class TagManagerDialog(QDialog):
 
                 del_btn = QPushButton("x")
                 del_btn.setFixedSize(22, 22)
+                del_btn.setToolTip("Delete tag")
+                del_btn.setAccessibleName("Delete tag")
+                del_btn.setCursor(Qt.PointingHandCursor)
                 del_btn.setStyleSheet(
                     "QPushButton { background:transparent; color:#855; font-size:12px;"
                     " font-weight:bold; border:1px solid #433; border-radius:11px; }"
@@ -696,6 +705,9 @@ class TagManagerDialog(QDialog):
         for i, color in enumerate(TAG_PRESET_COLORS):
             btn = QPushButton()
             btn.setFixedSize(30, 30)
+            btn.setToolTip(color.upper())
+            btn.setAccessibleName(color.upper())
+            btn.setCursor(Qt.PointingHandCursor)
             btn.setStyleSheet(
                 f"QPushButton {{ background:{color}; border:2px solid transparent;"
                 f" border-radius:15px; }}"
