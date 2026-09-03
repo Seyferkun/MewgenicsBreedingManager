@@ -138,6 +138,7 @@ class TagColorDialog(QDialog):
         form_layout.setVerticalSpacing(8)
 
         self._hex_input = QLineEdit()
+        self._hex_input.setClearButtonEnabled(True)
         self._hex_input.setPlaceholderText("#RRGGBB")
         self._hex_input.textEdited.connect(self._on_hex_edited)
         form_layout.addWidget(QLabel("Hex"), 0, 0)
@@ -341,6 +342,7 @@ class TagManagerDialog(QDialog):
         name_row.setSpacing(8)
 
         self._name_input = QLineEdit()
+        self._name_input.setClearButtonEnabled(True)
         self._name_input.setPlaceholderText("New tag name...")
         self._name_input.setMaxLength(20)
         name_row.addWidget(self._name_input, 1)
