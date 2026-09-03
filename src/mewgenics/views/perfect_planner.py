@@ -1890,6 +1890,7 @@ class PerfectCatPlannerView(QWidget):
         controls.addWidget(self._min_stats_label)
 
         self._min_stats_input = QLineEdit()
+        self._min_stats_input.setClearButtonEnabled(True)
         self._min_stats_input.setPlaceholderText(_tr("perfect_planner.placeholder.min_stats"))
         self._min_stats_input.setFixedWidth(60)
         self._min_stats_input.setStyleSheet(
@@ -1906,6 +1907,7 @@ class PerfectCatPlannerView(QWidget):
         controls.addWidget(self._max_risk_label)
 
         self._max_risk_input = QLineEdit()
+        self._max_risk_input.setClearButtonEnabled(True)
         self._max_risk_input.setPlaceholderText(_tr("perfect_planner.placeholder.max_risk"))
         self._max_risk_input.setFixedWidth(60)
         self._max_risk_input.setStyleSheet(
