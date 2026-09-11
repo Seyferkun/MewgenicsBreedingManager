@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
 )
 from PySide6.QtCore import Qt, Signal
 
+from mewgenics.utils.localization import _tr
 from .model import (
     ComplexWeight, Condition,
     FIELD_GENDER, FIELD_LIBIDO, FIELD_AGGRESSION, FIELD_SEXUALITY,
@@ -83,7 +84,8 @@ class _TraitSelectDialog(QDialog):
         vb.setSpacing(8)
 
         search = QLineEdit()
-        search.setPlaceholderText("Filter traits…")
+        search.setClearButtonEnabled(True)
+        search.setPlaceholderText(_tr("complex_weights.search_placeholder", default="Filter traits…"))
         search.setStyleSheet(_LINE_STYLE)
         search.textChanged.connect(self._filter)
         vb.addWidget(search)
