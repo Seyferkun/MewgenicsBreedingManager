@@ -1457,8 +1457,8 @@ class MainWindow(QMainWindow):
             " border-radius:4px; padding:3px 8px; font-size:12px; }"
             "QLineEdit:focus { border-color:#3a3a7a; }")
         self._fight_club_abilities_filter = QLineEdit()
-        self._fight_club_abilities_filter.setPlaceholderText(_tr("header.filter.abilities", default="Abilities"))
         self._fight_club_abilities_filter.setClearButtonEnabled(True)
+        self._fight_club_abilities_filter.setPlaceholderText(_tr("header.filter.abilities", default="Abilities"))
         self._fight_club_abilities_filter.setFixedWidth(132)
         self._fight_club_abilities_filter.setVisible(False)
         self._fight_club_abilities_filter.setStyleSheet(
@@ -1466,8 +1466,8 @@ class MainWindow(QMainWindow):
             " border-radius:4px; padding:3px 8px; font-size:12px; }"
             "QLineEdit:focus { border-color:#3a3a7a; }")
         self._fight_club_mutations_filter = QLineEdit()
-        self._fight_club_mutations_filter.setPlaceholderText(_tr("header.filter.mutations", default="Mutations"))
         self._fight_club_mutations_filter.setClearButtonEnabled(True)
+        self._fight_club_mutations_filter.setPlaceholderText(_tr("header.filter.mutations", default="Mutations"))
         self._fight_club_mutations_filter.setFixedWidth(132)
         self._fight_club_mutations_filter.setVisible(False)
         self._fight_club_mutations_filter.setStyleSheet(
