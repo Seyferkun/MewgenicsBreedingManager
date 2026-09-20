@@ -1476,6 +1476,7 @@ class MainWindow(QMainWindow):
             "QLineEdit:focus { border-color:#3a3a7a; }")
         self._pin_toggle = QPushButton(_tr("header.pin_toggle", default="📌"))
         self._pin_toggle.setCheckable(True)
+        self._pin_toggle.setCursor(Qt.PointingHandCursor)
         self._pin_toggle.setToolTip(_tr("header.pin_toggle_tooltip", default="Show only pinned cats"))
         self._pin_toggle.setStyleSheet(
             "QPushButton { background:#1a1a32; color:#888; border:1px solid #2a2a4a;"
@@ -1485,6 +1486,7 @@ class MainWindow(QMainWindow):
         self._pin_toggle.toggled.connect(self._on_pin_toggle)
 
         self._tags_btn = QPushButton("Tags")
+        self._tags_btn.setCursor(Qt.PointingHandCursor)
         self._tags_btn.setToolTip("Apply tags to selected cats")
         self._tags_btn.setStyleSheet(
             "QPushButton { background:#1a1a32; color:#aaa; border:1px solid #2a2a4a;"
