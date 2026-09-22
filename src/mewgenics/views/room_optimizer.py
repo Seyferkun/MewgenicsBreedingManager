@@ -146,12 +146,18 @@ class RoomOptimizerStatPrioritiesPanel(QWidget):
 
             up_btn = QPushButton("↑")
             up_btn.setFixedSize(24, 24)
+            up_btn.setCursor(Qt.PointingHandCursor)
+            up_btn.setToolTip(_tr("room_optimizer.button.up", default="Move stat up in priority"))
+            up_btn.setAccessibleName(_tr("room_optimizer.button.up", default="Move stat up in priority"))
             up_btn.setEnabled(index > 0)
             up_btn.clicked.connect(lambda _=False, mm=mode, ii=index: self._move_stat(mm, ii, -1))
             row_layout.addWidget(up_btn)
 
             down_btn = QPushButton("↓")
             down_btn.setFixedSize(24, 24)
+            down_btn.setCursor(Qt.PointingHandCursor)
+            down_btn.setToolTip(_tr("room_optimizer.button.down", default="Move stat down in priority"))
+            down_btn.setAccessibleName(_tr("room_optimizer.button.down", default="Move stat down in priority"))
             down_btn.setEnabled(index < len(order) - 1)
             down_btn.clicked.connect(lambda _=False, mm=mode, ii=index: self._move_stat(mm, ii, 1))
             row_layout.addWidget(down_btn)
