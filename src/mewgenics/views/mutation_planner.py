@@ -459,9 +459,9 @@ class MutationDisorderPlannerView(QWidget):
         self._target_trait_label = QLabel(_tr("mutation_planner.target_trait"))
         trait_row.addWidget(self._target_trait_label)
         self._trait_search = QLineEdit()
+        self._trait_search.setClearButtonEnabled(True)
         self._trait_search.setPlaceholderText(_tr("mutation_planner.search_placeholder"))
         self._trait_search.setFixedWidth(160)
-        self._trait_search.setClearButtonEnabled(True)
         self._trait_search.setStyleSheet(
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
             " border-radius:4px; padding:4px 8px; }"

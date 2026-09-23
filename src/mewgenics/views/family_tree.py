@@ -111,6 +111,7 @@ class FamilyTreeBrowserView(QWidget):
         mode_row.addWidget(self._alive_btn)
         lv.addLayout(mode_row)
         self._search = QLineEdit()
+        self._search.setClearButtonEnabled(True)
         self._search.setPlaceholderText(_tr("family_tree.search_placeholder"))
         self._search.setToolTip(_tr("family_tree.search.tooltip", default="Filter cats by name"))
         lv.addWidget(self._search)
