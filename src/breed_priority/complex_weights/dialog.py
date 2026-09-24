@@ -84,6 +84,7 @@ class _TraitSelectDialog(QDialog):
 
         search = QLineEdit()
         search.setPlaceholderText("Filter traits…")
+        search.setClearButtonEnabled(True)
         search.setStyleSheet(_LINE_STYLE)
         search.textChanged.connect(self._filter)
         vb.addWidget(search)
@@ -176,6 +177,9 @@ class _ConditionRow(QWidget):
         rm = QPushButton("✕")
         rm.setFixedWidth(22)
         rm.setStyleSheet(ACTION_BUTTON_SECONDARY_STYLE)
+        rm.setToolTip("Remove Condition")
+        rm.setAccessibleName("Remove Condition")
+        rm.setCursor(Qt.PointingHandCursor)
         rm.clicked.connect(self.removed)
         row.addWidget(rm)
 
@@ -579,6 +583,9 @@ class ComplexWeightsDialog(QDialog):
         del_btn = QPushButton("✕")
         del_btn.setFixedWidth(22)
         del_btn.setStyleSheet(ACTION_BUTTON_SECONDARY_STYLE)
+        del_btn.setToolTip("Delete Complex Weight")
+        del_btn.setAccessibleName("Delete Complex Weight")
+        del_btn.setCursor(Qt.PointingHandCursor)
         del_btn.clicked.connect(lambda _, i=idx: self._on_delete(i))
         hb.addWidget(del_btn)
 
