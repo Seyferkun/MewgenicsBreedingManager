@@ -259,6 +259,8 @@ class FurnitureView(QWidget):
         search_row.addWidget(self._pin_toggle_btn)
         self._pin_only_check = QToolButton()
         self._pin_only_check.setCheckable(True)
+        self._pin_only_check.setAccessibleName("Show Pinned Only")
+        self._pin_only_check.setToolTip(_tr("bulk.show_pinned_only_tooltip", default="Show pinned items only"))
         self._pin_only_check.setCursor(Qt.PointingHandCursor)
         self._pin_only_check.setToolButtonStyle(Qt.ToolButtonIconOnly)
         self._pin_only_check.setIconSize(QSize(16, 16))
