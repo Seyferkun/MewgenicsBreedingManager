@@ -263,6 +263,7 @@ class FurnitureView(QWidget):
         self._pin_only_check.setToolButtonStyle(Qt.ToolButtonIconOnly)
         self._pin_only_check.setIconSize(QSize(16, 16))
         self._pin_only_check.setFixedSize(28, 24)
+        self._pin_only_check.setAccessibleName(_tr("furniture.pin_only.tooltip", default="Show only pinned items in the current room."))
         self._pin_only_check.setStyleSheet(
             "QToolButton { background:#1a1a32; color:#888; border:1px solid #2a2a4a;"
             " border-radius:4px; padding:2px; }"

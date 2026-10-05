@@ -118,6 +118,7 @@ class SafeBreedingView(QWidget):
             "room_optimizer.detail.button.jump_to_pair",
             default="Show these two cats in the Alive Cats view",
         ))
+        jump_btn.setAccessibleName(_tr("room_optimizer.detail.button.jump_to_pair", default="Show these two cats in the Alive Cats view"))
         jump_btn.setAutoRaise(True)
         jump_btn.setFixedSize(24, 22)
         jump_btn.setStyleSheet(self._pair_jump_button_style())
