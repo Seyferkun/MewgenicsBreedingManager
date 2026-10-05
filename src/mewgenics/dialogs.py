@@ -674,6 +674,9 @@ class TagManagerDialog(QDialog):
 
                 del_btn = QPushButton("x")
                 del_btn.setFixedSize(22, 22)
+                del_btn.setAccessibleName("Delete Tag")
+                del_btn.setToolTip("Delete tag")
+                del_btn.setCursor(Qt.PointingHandCursor)
                 del_btn.setStyleSheet(
                     "QPushButton { background:transparent; color:#855; font-size:12px;"
                     " font-weight:bold; border:1px solid #433; border-radius:11px; }"
