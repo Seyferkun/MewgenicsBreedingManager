@@ -1640,6 +1640,9 @@ class PerfectPlannerFoundationPairsPanel(QWidget):
 
         swap_btn = QPushButton("\u2194")
         swap_btn.setFixedWidth(28)
+        swap_btn.setToolTip(_tr("perfect_planner.button.swap", default="Swap parents"))
+        swap_btn.setAccessibleName("Swap parents")
+        swap_btn.setCursor(Qt.PointingHandCursor)
         row_layout.addWidget(swap_btn)
 
         clear_btn = QPushButton(_tr("common.clear", default="Clear"))
