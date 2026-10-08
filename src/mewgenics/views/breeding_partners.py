@@ -56,6 +56,7 @@ class BreedingPartnersView(QWidget):
 
         self._search = QLineEdit()
         self._search.setToolTip(_tr("breeding_partners.search.tooltip", default="Filter pairs by cat name"))
+        self._search.setClearButtonEnabled(True)
         root.addWidget(self._search)
 
         self._table = QTableWidget(0, 6)
