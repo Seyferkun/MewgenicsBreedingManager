@@ -123,6 +123,7 @@ class CalibrationView(QWidget):
         filter_row.addWidget(self._search_label)
         self._search_input = QLineEdit()
         self._search_input.setClearButtonEnabled(True)
+        self._search_input.setPlaceholderText(_tr("calibration.search.placeholder", default="Filter cats by name..."))
         self._search_input.setStyleSheet(
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
             " border-radius:4px; padding:4px 8px; }"
