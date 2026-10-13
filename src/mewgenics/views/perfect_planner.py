@@ -1639,6 +1639,9 @@ class PerfectPlannerFoundationPairsPanel(QWidget):
         row_layout.addWidget(combo_b, 1)
 
         swap_btn = QPushButton("\u2194")
+        swap_btn.setToolTip(_tr("perfect_planner.foundation.swap_tooltip", default="Swap partners"))
+        swap_btn.setAccessibleName("Swap partners")
+        swap_btn.setCursor(Qt.PointingHandCursor)
         swap_btn.setFixedWidth(28)
         row_layout.addWidget(swap_btn)
 
