@@ -204,6 +204,7 @@ class _MutationSelector(QWidget):
 
         self._chk_individual = QCheckBox("Set individual weights")
         self._chk_individual.setToolTip("Enable to assign a custom weight to each item separately")
+        self._chk_individual.setCursor(Qt.CursorShape.PointingHandCursor)
         self._chk_individual.toggled.connect(self._on_individual_toggled)
         body_vb.addWidget(self._chk_individual)
 
@@ -698,6 +699,8 @@ class ManualScoringView(QWidget):
         toolbar.addWidget(self._room_combo)
 
         self._chk_in_house = QCheckBox("In House only")
+        self._chk_in_house.setToolTip("Show only cats that are currently in your house")
+        self._chk_in_house.setCursor(Qt.CursorShape.PointingHandCursor)
         self._chk_in_house.setChecked(True)
         self._chk_in_house.toggled.connect(self._on_filter_changed)
         toolbar.addWidget(self._chk_in_house)
@@ -708,6 +711,7 @@ class ManualScoringView(QWidget):
         toolbar.addWidget(self._calculate_btn)
         self._auto_calc_chk = QCheckBox("Auto Calc")
         self._auto_calc_chk.setToolTip("Automatically recalculate scores when config changes.")
+        self._auto_calc_chk.setCursor(Qt.CursorShape.PointingHandCursor)
         self._auto_calc_chk.setChecked(self._auto_calc)
         self._auto_calc_chk.toggled.connect(self._on_auto_calc_toggled)
         toolbar.addWidget(self._auto_calc_chk)
