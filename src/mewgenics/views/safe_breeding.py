@@ -118,6 +118,7 @@ class SafeBreedingView(QWidget):
             "room_optimizer.detail.button.jump_to_pair",
             default="Show these two cats in the Alive Cats view",
         ))
+        jump_btn.setAccessibleName("Jump to pair in alive cats view")
         jump_btn.setAutoRaise(True)
         jump_btn.setFixedSize(24, 22)
         jump_btn.setStyleSheet(self._pair_jump_button_style())
@@ -183,6 +184,7 @@ class SafeBreedingView(QWidget):
         muts_label.setStyleSheet("QLabel { color:#bbb; }")
         v.addWidget(muts_label)
         self._filter_mutation_search = QLineEdit()
+        self._filter_mutation_search.setClearButtonEnabled(True)
         self._filter_mutation_search.setPlaceholderText("Search mutations…")
         self._filter_mutation_search.textChanged.connect(self._refresh_mutation_filter_visibility)
         v.addWidget(self._filter_mutation_search)
@@ -257,6 +259,7 @@ class SafeBreedingView(QWidget):
         self._list_title = QLabel(styleSheet="color:#666; font-size:10px; font-weight:bold;")
         sv.addWidget(self._list_title)
         self._search = QLineEdit()
+        self._search.setClearButtonEnabled(True)
         sv.addWidget(self._search)
         self._list = QListWidget()
         self._list.setIconSize(QSize(60, 20))
