@@ -1896,6 +1896,7 @@ class PerfectCatPlannerView(QWidget):
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
             " border-radius:4px; padding:4px 8px; }"
         )
+        self._min_stats_input.setClearButtonEnabled(True)
         self._min_stats_input.textChanged.connect(lambda _: self._save_session_state())
         controls.addWidget(self._min_stats_input)
 
@@ -1912,6 +1913,7 @@ class PerfectCatPlannerView(QWidget):
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
             " border-radius:4px; padding:4px 8px; }"
         )
+        self._max_risk_input.setClearButtonEnabled(True)
         self._max_risk_input.textChanged.connect(lambda _: self._save_session_state())
         controls.addWidget(self._max_risk_input)
 
