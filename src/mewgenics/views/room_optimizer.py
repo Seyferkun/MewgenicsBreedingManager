@@ -558,6 +558,7 @@ class RoomOptimizerView(QWidget):
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
             " border-radius:4px; padding:4px 8px; }"
         )
+        self._min_stats_input.setClearButtonEnabled(True)
         self._min_stats_input.textChanged.connect(lambda _: self._save_session_state())
         self._min_stats_box_layout.addWidget(self._min_stats_input)
         self._setup_stats_row_layout.addWidget(self._min_stats_box)
@@ -577,6 +578,7 @@ class RoomOptimizerView(QWidget):
             "QLineEdit { background:#0d0d1c; color:#ccc; border:1px solid #2a2a4a;"
             " border-radius:4px; padding:4px 8px; }"
         )
+        self._max_risk_input.setClearButtonEnabled(True)
         self._max_risk_input.textChanged.connect(lambda _: self._save_session_state())
         self._max_risk_box_layout.addWidget(self._max_risk_input)
         self._setup_stats_row_layout.addWidget(self._max_risk_box)
