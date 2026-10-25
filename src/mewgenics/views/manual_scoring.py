@@ -209,6 +209,8 @@ class _MutationSelector(QWidget):
 
         # Search
         self._search = QLineEdit()
+        self._search.setClearButtonEnabled(True)
+        self._search.setToolTip(_tr("manual_scoring.search.tooltip", default="Filter cats by name"))
         self._search.setPlaceholderText("Filter...")
         self._search.textChanged.connect(self._filter_list)
         body_vb.addWidget(self._search)
