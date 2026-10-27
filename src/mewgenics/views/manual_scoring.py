@@ -209,8 +209,10 @@ class _MutationSelector(QWidget):
 
         # Search
         self._search = QLineEdit()
-        self._search.setPlaceholderText("Filter...")
+
         self._search.textChanged.connect(self._filter_list)
+        self._search.setPlaceholderText(_tr("manual_scoring.search_placeholder", default="Filter..."))
+        self._search.setClearButtonEnabled(True)
         body_vb.addWidget(self._search)
 
         # Show filter (All / Checked / Unchecked)
