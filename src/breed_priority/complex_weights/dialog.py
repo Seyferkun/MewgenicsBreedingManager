@@ -83,6 +83,7 @@ class _TraitSelectDialog(QDialog):
         vb.setSpacing(8)
 
         search = QLineEdit()
+        search.setClearButtonEnabled(True)
         search.setPlaceholderText("Filter traits…")
         search.setStyleSheet(_LINE_STYLE)
         search.textChanged.connect(self._filter)
@@ -340,6 +341,7 @@ class _CWEditorDialog(QDialog):
         name_row = QHBoxLayout()
         name_row.addWidget(QLabel("Name:"))
         self._name_edit = QLineEdit()
+        self._name_edit.setClearButtonEnabled(True)
         self._name_edit.setPlaceholderText("Complex Weight name…")
         self._name_edit.setStyleSheet(_LINE_STYLE)
         name_row.addWidget(self._name_edit, stretch=1)
